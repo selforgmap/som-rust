@@ -4,16 +4,12 @@ use som::*;
 
 // Main function
 fn main() {
-    let som = SOM {
-        size                  : (10, 10),
-        dimension             : 3,
-        grid_type             : GridType::Rectangular,
-        learning_rate         : 0.1,
-        learning_rate_function: LearningRateFunction::Constant,
-        initializing_method   : InitializingMethod::Random,
-        neighborhood_function : NeighborhoodFunction::Bubble,
-        iterations            : 100
-    };
+    let item: Vec<i32> = vec![2,3,4];
+    let v: Vec<&Vec<i32>> = vec![&item, &item, &item];
 
+    let som = SOM::new((10, 10));
+    som.train(&v, 100);
+
+    println!("{}", v[1][2]);
     println!("{}", som.iterations); // Test
 }
