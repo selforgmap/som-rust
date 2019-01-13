@@ -1,0 +1,10 @@
+(function() {var implementors = {};
+implementors["lib"] = [{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Send.html\" title=\"trait core::marker::Send\">Send</a> for <a class=\"struct\" href=\"lib/struct.SOM.html\" title=\"struct lib::SOM\">SOM</a>",synthetic:true,types:["lib::core::som::SOM"]},{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Send.html\" title=\"trait core::marker::Send\">Send</a> for <a class=\"struct\" href=\"lib/struct.Net.html\" title=\"struct lib::Net\">Net</a>",synthetic:true,types:["lib::core::net::Net"]},{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Send.html\" title=\"trait core::marker::Send\">Send</a> for <a class=\"enum\" href=\"lib/enum.GridType.html\" title=\"enum lib::GridType\">GridType</a>",synthetic:true,types:["lib::enums::enums::GridType"]},{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Send.html\" title=\"trait core::marker::Send\">Send</a> for <a class=\"enum\" href=\"lib/enum.LearningRateFunction.html\" title=\"enum lib::LearningRateFunction\">LearningRateFunction</a>",synthetic:true,types:["lib::enums::enums::LearningRateFunction"]},{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Send.html\" title=\"trait core::marker::Send\">Send</a> for <a class=\"enum\" href=\"lib/enum.NeighborhoodFunction.html\" title=\"enum lib::NeighborhoodFunction\">NeighborhoodFunction</a>",synthetic:true,types:["lib::enums::enums::NeighborhoodFunction"]},{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Send.html\" title=\"trait core::marker::Send\">Send</a> for <a class=\"enum\" href=\"lib/enum.InitializingMethod.html\" title=\"enum lib::InitializingMethod\">InitializingMethod</a>",synthetic:true,types:["lib::enums::enums::InitializingMethod"]},];
+
+            if (window.register_implementors) {
+                window.register_implementors(implementors);
+            } else {
+                window.pending_implementors = implementors;
+            }
+        
+})()
