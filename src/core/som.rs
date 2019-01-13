@@ -1,4 +1,5 @@
 use crate::enums::*;
+use crate::core::*;
 
 // SOM Struct
 pub struct SOM {
@@ -25,8 +26,29 @@ impl SOM {
     }
   }
 
-  // Start train
+  // Start training
   pub fn train(&self, dataset: &Vec<&Vec<i32>>, iterations: i32) -> () {
+    let dimension: u32 = 3; // Dimension
+    let _net: Net = Net::new(self.size, dimension);
+
+    // For each iteration
+    for _i in 0..iterations {
+      // Foe each dataitem
+      for _item in dataset {
+
+        // println!("{}", item[0])
+      }
+
+      // println!("{}", i);
+    }
+
+
+
+
+
+
     println!("Traing {} {}", dataset[1][2], iterations);
+
+
   }
 }

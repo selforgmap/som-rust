@@ -1,4 +1,5 @@
 mod som;
-mod functions;
+mod net;
 
 pub use self::som::SOM;
+pub use self::net::Net;
