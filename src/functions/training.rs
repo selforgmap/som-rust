@@ -1,8 +1,8 @@
-use crate::core::Net;
-use crate::helpers::math::*;
+use crate::core::*;
+use crate::utils::*;
 
 // Find BMU
-pub fn find_bmu(item: &Vec<i32>, net: Net) -> u32 {
+pub fn find_bmu(item: &Vec<i32>, net: &Net) -> u32 {
   let mut min_dist: i32 = std::i32::MAX;
   let mut bmu: u32 = 0;
 
@@ -30,6 +30,6 @@ mod functions_tests {
     
     let item: Vec<i32> = vec![5,6,7];
 
-    assert_eq!(1, super::find_bmu(&item, net));
+    assert_eq!(1, super::find_bmu(&item, &net));
   }
 }

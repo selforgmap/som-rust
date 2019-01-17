@@ -4,16 +4,16 @@ pub enum GridType {
   Hexagonal
 }
 
-// Learning rate function
-pub enum LearningRateFunction {
+// Learning rate type
+pub enum LearningRateType {
   Constant,
   Linear,
   InverseOfTime,
   PowerSeries
 }
 
-// Neighborhood function
-pub enum NeighborhoodFunction {
+// Neighborhood type
+pub enum NeighborhoodType {
   Bubble
 }
 
