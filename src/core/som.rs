@@ -3,7 +3,7 @@ use crate::enums::*;
 use crate::functions::*;
 
 
-// SOM Struct
+/// SOM Struct
 pub struct SOM {
   pub size                  : (u32, u32),
   pub grid_type             : GridType,
@@ -15,7 +15,11 @@ pub struct SOM {
 }
 
 impl SOM {
-  // New som
+  /// Create new instance
+  /// 
+  /// # Arguments
+  /// 
+  /// * `size` - Tuple of width and height
   pub fn new(size: (u32, u32)) -> SOM {
     SOM {
       size                  : size,
@@ -28,7 +32,12 @@ impl SOM {
     }
   }
 
-  // Start training
+  /// Start training
+  /// 
+  /// # Arguments
+  /// 
+  /// * `dataset` - Input dataset
+  /// * `iterations` - No of iterations
   pub fn train(&self, dataset: &Vec<&Vec<i32>>, iterations: i32) -> () {
     let dimension: u32 = 3; // Dimension
     let net: Net = Net::new(self.size, dimension);

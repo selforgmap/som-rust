@@ -1,7 +1,13 @@
 use crate::core::*;
 use crate::utils::*;
 
-// Find BMU
+/// Find Best Matching Unit
+/// Returns the node index
+/// 
+/// # Arguments
+/// 
+/// * `item` - Data item
+/// * `net` - Net object
 pub fn find_bmu(item: &Vec<i32>, net: &Net) -> u32 {
   let mut min_dist: i32 = std::i32::MAX;
   let mut bmu: u32 = 0;
@@ -18,7 +24,7 @@ pub fn find_bmu(item: &Vec<i32>, net: &Net) -> u32 {
 
 
 
-// Unit tests
+/// Unit tests
 #[cfg(test)]
 mod functions_tests {
   use crate::core::Net;

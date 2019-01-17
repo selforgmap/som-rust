@@ -1,4 +1,9 @@
-// Squared Euclidean Distance
+/// Calculate Squared Euclidean Distance
+/// 
+/// # Arguments
+/// 
+/// * `first` - Vector 1
+/// * `second` - Vector 2
 pub fn squared_euclidean_distance(first: &Vec<i32>, second: &Vec<i32>) -> i32 {
   return first.iter().zip(second)
     .map(|(a, b)| (a - b).pow(2))
@@ -6,7 +11,7 @@ pub fn squared_euclidean_distance(first: &Vec<i32>, second: &Vec<i32>) -> i32 {
 }
 
 
-// Unit tests
+/// Unit tests
 #[cfg(test)]
 mod math_tests {
   #[test]

@@ -1,10 +1,10 @@
-// Grid Type
+/// Grid Type
 pub enum GridType {
   Rectangular,
   Hexagonal
 }
 
-// Learning rate type
+/// Learning rate type
 pub enum LearningRateType {
   Constant,
   Linear,
@@ -12,12 +12,12 @@ pub enum LearningRateType {
   PowerSeries
 }
 
-// Neighborhood type
+/// Neighborhood type
 pub enum NeighborhoodType {
   Bubble
 }
 
-// Initializing Method
+/// Initializing Method
 pub enum InitializingMethod {
   Random,
   PCA
