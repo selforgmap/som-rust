@@ -11,7 +11,7 @@ pub struct SOM {
   pub learning_rate_type    : LearningRateType,
   pub neighborhood_type     : NeighborhoodType,
   pub initializing_method   : InitializingMethod,
-  pub iterations            : i32,
+  pub iterations            : u32,
 }
 
 impl SOM {
@@ -43,11 +43,14 @@ impl SOM {
     let net: Net = Net::new(self.size, dimension);
 
     // For each iteration
-    for _i in 0..iterations {
+    for iter in 0..iterations {
       // Foe each dataitem
       for item in dataset {
 
         let _bmu: u32 = find_bmu(&item, &net);
+
+        let learning_rate = calc_learning_rate(&self.learning_rate_type, iter as u32, self);
+
 
       }
 
