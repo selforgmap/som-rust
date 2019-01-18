@@ -1,3 +1,5 @@
+use rayon::prelude::*;
+
 use crate::core::*;
 use crate::enums::*;
 use crate::functions::*;
@@ -38,9 +40,9 @@ impl SOM {
   /// 
   /// * `dataset` - Input dataset
   /// * `iterations` - No of iterations
-  pub fn train(&self, dataset: &Vec<&Vec<isize>>, iterations: isize) -> () {
+  pub fn train(&self, dataset: &Vec<Vec<f32>>, iterations: isize) -> Net {
     let dimension: usize = 3; // Dimension
-    let net: Net = Net::new(self.size, dimension);
+    let mut net: Net = Net::new(self.size, dimension);
 
     let loc_matrix:  LocationMatrix = generate_location_matrix(&self.grid_type, self.size);
     let dist_matrix: DistanceMatrix = generate_distance_matrix(&loc_matrix, self.size);
@@ -54,19 +56,24 @@ impl SOM {
         let bmu_index: usize = find_bmu_index(&item, &net);
 
         // Cooperative Process
-        let _learning_rate = calc_learning_rate(&self.learning_rate_type, iter as usize, self);
+        let lr_value = calc_learning_rate(&self.learning_rate_type, iter as usize, self);
 
         // Adopt neighbors
-        for (node_index, _node) in net.nodes.iter().enumerate() {
-          // Calculate Neighborhood Value
-          let _nh_value: f32 = calc_neighborhood_value(&self.neighborhood_type, bmu_index, node_index, iter as usize, &dist_matrix);
-
-        }
+        net.nodes.par_iter_mut().enumerate()
+          .for_each(|(node_index, node)| {
+            // Calculate Neighborhood Value
+            let nh_value: f32 = calc_neighborhood_value(&self.neighborhood_type, bmu_index, node_index, iter as usize, &dist_matrix);
+            
+            // Update neurone weights
+            node.par_iter_mut().enumerate()
+              .for_each(|(i, weight)| {
+                *weight += lr_value * nh_value * (item[i] - *weight);
+              });
+          });
 
       }
-
     }
 
-    println!("Traing {} {}", dataset[1][2], iterations);
+    return net;
   }
 }

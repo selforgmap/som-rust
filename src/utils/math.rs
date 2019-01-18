@@ -1,13 +1,16 @@
+use rayon::prelude::*;
+
+
 /// Calculate Squared Euclidean Distance
 /// 
 /// # Arguments
 /// 
 /// * `first` - Vector 1
 /// * `second` - Vector 2
-pub fn squared_euclidean_distance(first: &Vec<isize>, second: &Vec<isize>) -> isize {
-  return first.iter().zip(second)
-    .map(|(a, b)| (a - b).pow(2))
-    .fold(0isize, |sum, val| sum + val);
+pub fn squared_euclidean_distance(first: &Vec<f32>, second: &Vec<f32>) -> f32 {
+  return first.into_par_iter().zip(second).into_par_iter()
+    .map(|(a, b)| (a - b).powi(2))
+    .sum()
 }
 
 /// Calculate Euclidean Distance
@@ -26,9 +29,9 @@ pub fn euclidean_distance(first: (f32, f32), second: (f32, f32)) -> f32 {
 mod math_tests {
   #[test]
   fn test_squared_euclidean_distance() {
-    let a: Vec<isize> = vec![2, 3, 4];
-    let b: Vec<isize> = vec![6, 5, 2];
-    assert_eq!(24, super::squared_euclidean_distance(&a, &b));
+    let a: Vec<f32> = vec![2f32, 3f32, 4f32];
+    let b: Vec<f32> = vec![6f32, 5f32, 2f32];
+    assert_eq!(24f32, super::squared_euclidean_distance(&a, &b));
   }
 
   #[test]

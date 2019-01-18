@@ -1,3 +1,5 @@
+use rayon::prelude::*;
+
 use crate::core::*;
 use crate::utils::*;
 
@@ -8,18 +10,14 @@ use crate::utils::*;
 /// 
 /// * `item` - Data item
 /// * `net` - Net object
-pub fn find_bmu_index(item: &Vec<isize>, net: &Net) -> usize {
-  let mut min_dist: isize = std::isize::MAX;
-  let mut bmu_index: usize = 0;
-
-  for (i, node) in net.nodes.iter().enumerate() {
-    let dist: isize = squared_euclidean_distance(item, node);
-    if dist < min_dist {
-      min_dist = dist;
-      bmu_index = i;
-    }
-  }
-  return bmu_index;
+pub fn find_bmu_index(item: &Vec<f32>, net: &Net) -> usize {
+  let nodes = &net.nodes;
+  let bmu = nodes.into_par_iter().enumerate()
+    .map(|(i, node)| (i, squared_euclidean_distance(&item, &node)))
+    .reduce(|| (0usize, std::f32::MAX), |a, b| {
+      if a.1 < b.1 { a } else { b }
+    });
+  return bmu.0;
 }
 
 /// Unit tests
@@ -30,10 +28,10 @@ mod functions_tests {
   #[test]
   fn test_find_bmu() {
     let mut net: Net = Net::new((2, 2), 3);
-    net.nodes = vec![vec![3,4,5], vec![4,5,6], vec![6,7,8], vec![-1,-4,-7]];
+    net.nodes = vec![vec![3f32,4f32,5f32], vec![4f32,8f32,6f32], vec![6f32,7f32,8f32], vec![-1f32,-4f32,-7f32]];
     
-    let item: Vec<isize> = vec![5,6,7];
+    let item: Vec<f32> = vec![5f32,6f32,7f32];
 
-    assert_eq!(1, super::find_bmu_index(&item, &net));
+    assert_eq!(2, super::find_bmu_index(&item, &net));
   }
 }

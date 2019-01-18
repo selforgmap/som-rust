@@ -1,3 +1,5 @@
+extern crate rayon;
+
 mod core;
 mod enums;
 mod functions;

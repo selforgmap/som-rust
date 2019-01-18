@@ -13,3 +13,4 @@ name = "som"
 path = "src/bin.rs"
 
 [dependencies]
+rayon = "1.0"
