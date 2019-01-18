@@ -42,19 +42,24 @@ impl SOM {
     let dimension: usize = 3; // Dimension
     let net: Net = Net::new(self.size, dimension);
 
+    let loc_matrix:  LocationMatrix = generate_location_matrix(&self.grid_type, self.size);
+    let dist_matrix: DistanceMatrix = generate_distance_matrix(&loc_matrix, self.size);
+
     // For each iteration
     for iter in 0..iterations {
       // Foe each dataitem
       for item in dataset {
 
         // Calculate BMU Index
-        let _bmu_index: usize = find_bmu_index(&item, &net);
+        let bmu_index: usize = find_bmu_index(&item, &net);
 
         // Cooperative Process
-        let _learning_rate = calc_learning_rate(&self.learning_rate_type, iter, self);
+        let _learning_rate = calc_learning_rate(&self.learning_rate_type, iter as usize, self);
 
         // Adopt neighbors
-        for (i, node) in net.nodes.iter().enumerate() {
+        for (node_index, _node) in net.nodes.iter().enumerate() {
+          // Calculate Neighborhood Value
+          let _nh_value: f32 = calc_neighborhood_value(&self.neighborhood_type, bmu_index, node_index, iter as usize, &dist_matrix);
 
         }
 
