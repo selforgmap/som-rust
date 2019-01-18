@@ -1,2 +1,0 @@
-# som
-Self Organizing Map
