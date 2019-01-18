@@ -1,14 +1,14 @@
 /// Net struct : Neural network
 pub struct Net {
-  pub nodes: Vec<Vec<i32>>,
-  pub size: (u32, u32)
+  pub nodes: Vec<Vec<isize>>,
+  pub size: (usize, usize)
 }
 
 impl Net {
   /// Create new Net instance
-  pub fn new(size: (u32, u32), dimension: u32) -> Net {
+  pub fn new(size: (usize, usize), dimension: usize) -> Net {
     Net {
-      nodes: vec![vec![0i32; dimension as usize]; (size.0 * size.1) as usize],
+      nodes: vec![vec![0isize; dimension as usize]; (size.0 * size.1) as usize],
       size: size
     }
   }

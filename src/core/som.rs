@@ -5,13 +5,13 @@ use crate::functions::*;
 
 /// SOM Struct
 pub struct SOM {
-  pub size                  : (u32, u32),
+  pub size                  : (usize, usize),
   pub grid_type             : GridType,
   pub learning_rate         : f32,
   pub learning_rate_type    : LearningRateType,
   pub neighborhood_type     : NeighborhoodType,
   pub initializing_method   : InitializingMethod,
-  pub iterations            : u32,
+  pub iterations            : usize,
 }
 
 impl SOM {
@@ -20,7 +20,7 @@ impl SOM {
   /// # Arguments
   /// 
   /// * `size` - Tuple of width and height
-  pub fn new(size: (u32, u32)) -> SOM {
+  pub fn new(size: (usize, usize)) -> SOM {
     SOM {
       size                  : size,
       grid_type             : GridType::Rectangular,
@@ -38,8 +38,8 @@ impl SOM {
   /// 
   /// * `dataset` - Input dataset
   /// * `iterations` - No of iterations
-  pub fn train(&self, dataset: &Vec<&Vec<i32>>, iterations: i32) -> () {
-    let dimension: u32 = 3; // Dimension
+  pub fn train(&self, dataset: &Vec<&Vec<isize>>, iterations: isize) -> () {
+    let dimension: usize = 3; // Dimension
     let net: Net = Net::new(self.size, dimension);
 
     // For each iteration
@@ -47,10 +47,16 @@ impl SOM {
       // Foe each dataitem
       for item in dataset {
 
-        let _bmu: u32 = find_bmu(&item, &net);
+        // Calculate BMU Index
+        let _bmu_index: usize = find_bmu_index(&item, &net);
 
-        let learning_rate = calc_learning_rate(&self.learning_rate_type, iter as u32, self);
+        // Cooperative Process
+        let _learning_rate = calc_learning_rate(&self.learning_rate_type, iter, self);
 
+        // Adopt neighbors
+        for (i, node) in net.nodes.iter().enumerate() {
+
+        }
 
       }
 
