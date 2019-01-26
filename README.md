@@ -1,35 +1,34 @@
 # som
 Self Organizing Map
 
-# Pre-requisites
-## Setup rust
+## Pre-requisites
+### Setup rust
 To download Rustup and install Rust, run the following in your terminal, then follow the on-screen instructions.
-```
+```sh
 $ curl https://sh.rustup.rs -sSf | sh
 ```
 
-
-# Setting up the project
+## Setting up the project
 Here are the instructions on how to setup the project.
-## Clone Project
+### Clone Project
 Clone the repository
-```
+```sh
 $ git clone https://github.com/sumedhe/som.git
 $ cd som
 ```
 
-## Build
+### Build
 Build the project
-```
+```sh
 $ cargo build --release
 ```
-## Build & Run program
+### Build & Run program
 To start the program,
-```
+```sh
 $ cargo run
 ```
-## Run tests
+### Run tests
 Unit tests
-```
+```sh
 $ cargo test
 ```
