@@ -1,6 +1,8 @@
 # som
 Self Organizing Map
 
+[![Build Status](https://travis-ci.org/selforgmap/som-rust.svg?branch=master)](https://travis-ci.org/selforgmap/som-rust)
+
 ## Pre-requisites
 ### Setup rust
 To download Rustup and install Rust, run the following in your terminal, then follow the on-screen instructions.
